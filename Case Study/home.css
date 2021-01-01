@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+}
+#navbar{
+    background:linear-gradient(to right,#0b001d,#050752);
+    padding: 2%;
+}
+#navbar a{
+    padding: 10px;
+    font-size:30px;
+    color:white;
+    text-decoration: none;
+}
+table{
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 10%;
+    padding-bottom: 5%;
+    padding: 2%;
+    overflow:hidden;
+
+}
+td{
+    border: 1px solid #7fc2dd;
+    text-align: center;
+}
+th{
+    border: 1px solid#7fc2dd;
+    padding: 0.6rem;
+    text-align: center;
+    background: #190a42;
+    color:white;
+}

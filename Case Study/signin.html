@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LOGIN</title>
+        <link rel="stylesheet" href="signin.css">
+    </head>
+    <body>
+            <div class="Login">
+                <h1>Login</h1>
+                <div id="error"></div>
+                <form  id="form" method="POST" onsubmit="return checkInputs(callback)">
+                      <div class="contain">
+                        <input type="text" placeholder="Username" id="user" autocomplete="off">
+                      </div> 
+                      <div class="contain">
+                        <input type="password" placeholder="Input Password" id="pass" autocomplete="off">
+                      </div>
+                      <input class="button" type="submit" name="" value="Sign In">
+        </div>
+        <script>
+            function checkInputs(callback)
+            {
+                const user = document.getElementById('user').value;
+                const pass = document.getElementById('pass').value;
+                const error = document.getElementById('error');
+                let text;
+                if(user === "admin" && pass === "12345"){
+                    callback();
+                }
+                else{
+                    text="Invalid username or password";
+                    error.innerHTML=text;
+                    error.style.padding="8px";
+                    return false;
+            }
+          
+            }
+            function callback(){
+                window.open("home.html");
+            }
+        </script>
+    </body>
+</html>

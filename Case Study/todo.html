@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>To-Do</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <link rel="stylesheet" href="home.css">
+    </head>
+    <body>
+            <nav id="navbar">
+                <a href="home.html">Home</a>
+                <a href="todo.html">To Do</a>
+                <a href="signin.html">Logout</a>
+            </nav>
+      
+    
+
+        <h2>To Do List</h2> 
+        
+    <div id="showData"></div>
+      
+
+
+      
+      
+        
+
+    
+    <section> 
+  
+        <!-- TABLE CONSTRUCTION-->
+        <table id='table'> 
+         
+            <!-- HEADING FORMATION -->
+            <tr> 
+                <th>USER ID</th> 
+                <th>ID</th> 
+                <th>TITLE</th> 
+                <th>COMPLETED </th> 
+            </tr> 
+            <!-- <input type="button" value="Complete" onsubmit="return checkboxes()"/> -->
+    <script>
+     $(document).ready(function () { 
+                    // FETCHING DATA FROM JSON FILE 
+                    $.getJSON("https://jsonplaceholder.typicode.com/todos",  
+                            function (data) { 
+                        var user = ''; 
+  
+                        // ITERATING THROUGH OBJECTS 
+                        $.each(data, function (key, value) { 
+  
+                            //CONSTRUCTION OF ROWS HAVING 
+                            // DATA FROM JSON OBJECT 
+                            user += '<tr>'; 
+                                user += '<td>' +  
+                                value.userId + '</td>'; 
+  
+                                user += '<td>' +  
+                                value.id + '</td>'; 
+  
+                                user += '<td>' +  
+                                value.title + '</td>'; 
+  
+                                var temp=value.completed;
+                                if(temp==true)
+                                {
+                                    user+='<td><input checked type="checkbox" id="completed" name="completed"  disabled></td>';
+                                }
+                                else
+                                {
+                                    user+='<td><input type="checkbox" id="completed1" name="completed" onclick="checkboxes()"></td>';
+                                }
+
+                                  user += '</tr>';
+
+                                         
+                               
+                        }); 
+                        //INSERTING ROWS INTO TABLE 
+                        
+                        
+                        $('#table').append(user); 
+                      
+                    }); 
+                   
+                }); 
+
+               
+                
+                // console.log(ele);
+                var arr = document.getElementsByTagName("input");
+                function checkboxes()
+                {
+                    
+                    var promise = new Promise(function(resolve,reject){
+                        var count=0;
+                    
+                        for(var i=0;i<=arr.length;i++)
+                        {
+                            if(arr[i].checked)
+                            {
+                                count++;
+                                
+                            }
+                            if(arr[i].disabled){
+                                count--;
+                            }
+                            if(count==5)
+                            {
+                               
+                                break;    
+                            }
+                           
+                        }
+                        if(count==5)
+                        {
+                            resolve("Congrats!! 5 tasks successfully completed.");
+                            // disableCheckboxes();
+                        }
+                        else{
+                            reject("Error");
+                        }
+                    });
+                    promise
+                    .then(function(s){
+                        alert(s);
+                    })
+                    .catch(function(s){
+                        console.log(e);
+                    })
+                    }
+
+                
+    </script>
+    </section>
+</body>
+
+</html>
